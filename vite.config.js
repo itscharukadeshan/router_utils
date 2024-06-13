@@ -3,11 +3,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
-import fs from "fs";
+
+// import fs from "fs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
+  /* server: {
     https: {
       key: fs.readFileSync("./vite.key"),
       cert: fs.readFileSync("./vite.crt"),
@@ -15,6 +16,7 @@ export default defineConfig({
     host: "0.0.0.0", // to allow access from local network
     port: 5000, // or any port you prefer
   },
+  */
   plugins: [
     react(),
     VitePWA({
