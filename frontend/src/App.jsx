@@ -50,7 +50,7 @@ function App() {
 
   const checkServerStatus = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/status");
+      const response = await axios.get("http://localhost:5172/status");
 
       const massage = response.data.message;
       console.log(massage);
