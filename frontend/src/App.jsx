@@ -2,16 +2,32 @@
 
 import "./index.css";
 import axios from "axios";
-import { useState } from "react";
 
 function App() {
-  const [serverStatus, setServerStatus] = useState("Unknown");
-  const [statusColor, setStatusColor] = useState("badge-neutral");
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const handleRebootRouter1 = async () => {
+    const data = `isTest=false&goformId=REBOOT_DEVICE`;
+    const url = "http://192.168.1.1/goform/goform_set_cmd_process";
+
     try {
-      await axios.get("http://localhost:3000/hutch_reboot");
-      alert("Router Reboot");
+      const response_01 = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+
+      console.log(response_01);
+
+      const response_02 = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+
+      await delay(1000);
+
+      console.log(response_02);
     } catch (error) {
       console.error("Error rebooting router 1:", error);
       alert("Failed to reboot router 1");
@@ -19,9 +35,27 @@ function App() {
   };
 
   const handleRebootRouter2 = async () => {
+    const data = `isTest=false&goformId=REBOOT_DEVICE`;
+    const url = "http://192.168.8.1/goform/goform_set_cmd_process";
+
     try {
-      await axios.get("http://localhost:3000/dialog_reboot");
-      alert("Router Reboot");
+      const response_01 = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+
+      console.log(response_01);
+
+      await delay(1000);
+
+      const response_02 = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+
+      console.log(response_02);
     } catch (error) {
       console.error("Error rebooting router 2:", error);
       alert("Failed to reboot router 2");
@@ -45,22 +79,6 @@ function App() {
     } catch (error) {
       console.error("Error getting status for router 2:", error);
       alert("Failed to get status for router 2");
-    }
-  };
-
-  const checkServerStatus = async () => {
-    try {
-      const response = await axios.get("http://localhost:5172/status");
-
-      const massage = response.data.message;
-      console.log(massage);
-
-      setServerStatus("Reachable");
-      setStatusColor("badge-success");
-    } catch (error) {
-      console.error("Error checking server status:", error);
-      setServerStatus("Not reachable");
-      setStatusColor("badge-error");
     }
   };
 
@@ -88,12 +106,6 @@ function App() {
           onClick={handleStatusRouter2}>
           Dialog Router
         </button>
-        <button
-          className='btn btn-outline btn-info my-4 mx-10'
-          onClick={checkServerStatus}>
-          Check Server Status
-        </button>
-        <div className={`badge ${statusColor} my-4 mx-10`}>{serverStatus}</div>
       </div>
     </div>
   );
