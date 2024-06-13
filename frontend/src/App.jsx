@@ -25,12 +25,12 @@ function App() {
         },
       });
 
-      await delay(1000);
+      await delay(10);
 
       console.log(response_02);
     } catch (error) {
-      console.error("Error rebooting router 1:", error);
-      alert("Failed to reboot router 1");
+      console.error("Error rebooting router 2:", error);
+      alert("Request forwarded successfully, but encountered an error");
     }
   };
 
@@ -47,7 +47,7 @@ function App() {
 
       console.log(response_01);
 
-      await delay(1000);
+      await delay(10);
 
       const response_02 = await axios.post(url, data, {
         headers: {
@@ -58,7 +58,7 @@ function App() {
       console.log(response_02);
     } catch (error) {
       console.error("Error rebooting router 2:", error);
-      alert("Failed to reboot router 2");
+      alert("Request forwarded successfully, but encountered an error");
     }
   };
 
