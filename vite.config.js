@@ -21,6 +21,18 @@ export default defineConfig({
     // Allow local network access
     host: "0.0.0.0",
     port: 5000, // or any port you prefer
+    // Configure response headers
+    configureServer: (server) => {
+      server.middlewares.use((req, res, next) => {
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader(
+          "Access-Control-Allow-Headers",
+          "Origin, X-Requested-With, Content-Type, Accept"
+        );
+        res.setHeader("Content-Type", "application/x-www-form-urlencoded");
+        next();
+      });
+    },
   },
   plugins: [
     react(),
