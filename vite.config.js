@@ -8,15 +8,20 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  /* server: {
+  server: {
+    // Enable CORS
+    cors: true,
+    // Uncomment if you need HTTPS support with custom certificates
+    /*
     https: {
       key: fs.readFileSync("./vite.key"),
       cert: fs.readFileSync("./vite.crt"),
     },
-    host: "0.0.0.0", // to allow access from local network
+    */
+    // Allow local network access
+    host: "0.0.0.0",
     port: 5000, // or any port you prefer
   },
-  */
   plugins: [
     react(),
     VitePWA({
