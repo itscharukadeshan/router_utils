@@ -1,4 +1,8 @@
 # Logs
+
+vite.key
+vite.crt
+
 logs
 *.log
 npm-debug.log*
