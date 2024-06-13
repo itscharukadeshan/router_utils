@@ -24,6 +24,7 @@ function App() {
       const response_01 = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
         },
       });
       console.log(response_01.data);
@@ -33,6 +34,7 @@ function App() {
       const response_02 = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
         },
       });
       console.log(response_02.data);
@@ -55,6 +57,7 @@ function App() {
       const response_01 = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
         },
       });
 
@@ -63,6 +66,7 @@ function App() {
       const response_02 = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
         },
       });
 
@@ -83,6 +87,7 @@ function App() {
       const response_01 = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
         },
       });
 
@@ -93,6 +98,7 @@ function App() {
       const response_02 = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
         },
       });
 
