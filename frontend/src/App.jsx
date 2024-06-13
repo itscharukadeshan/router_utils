@@ -62,26 +62,6 @@ function App() {
     }
   };
 
-  const handleStatusRouter1 = async () => {
-    try {
-      await axios.get("/hutch_dns");
-      alert("Status command for Router 192.168.1.1 sent");
-    } catch (error) {
-      console.error("Error getting status for router 1:", error);
-      alert("Failed to get status for router 1");
-    }
-  };
-
-  const handleStatusRouter2 = async () => {
-    try {
-      await axios.get("/dialog_dns");
-      alert("Status command for Router 192.168.8.1 sent");
-    } catch (error) {
-      console.error("Error getting status for router 2:", error);
-      alert("Failed to get status for router 2");
-    }
-  };
-
   return (
     <div className='text-2xl font-mono font-bold my-14 mx-14'>
       <h1 className='my-8'>Router Control Panel</h1>
@@ -95,16 +75,6 @@ function App() {
           className='btn btn-outline btn-error my-4 mx-10'
           onClick={handleRebootRouter2}>
           Reboot Dialog
-        </button>
-        <button
-          className='btn btn-outline btn-warning my-4 mx-10'
-          onClick={handleStatusRouter1}>
-          Hutch Status
-        </button>
-        <button
-          className='btn btn-outline btn-error my-4 mx-10'
-          onClick={handleStatusRouter2}>
-          Dialog Router
         </button>
       </div>
     </div>
