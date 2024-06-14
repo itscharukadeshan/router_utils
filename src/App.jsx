@@ -8,7 +8,7 @@ function App() {
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const handleRebootRouter1 = async () => {
-    const data = `isTest=false&goformId=RESTORE_FACTORY_SETTINGS`;
+    const data = `isTest=false&goformId=REBOOT_DEVICE`;
     const url = "http://192.168.1.1/goform/goform_set_cmd_process";
 
     try {
