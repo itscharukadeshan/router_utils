@@ -1,0 +1,15 @@
+# @format
+
+version: "3.8"
+
+services:
+  router_utils:
+    image: router_utils
+    ports:
+      - "5000:5000"
+    networks:
+      - local_network
+
+networks:
+  local_network:
+    driver: bridge
