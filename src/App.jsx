@@ -9,7 +9,7 @@ function App() {
 
   const handleRebootRouter1 = async () => {
     const data = `isTest=false&goformId=REBOOT_DEVICE`;
-    const url = "http://192.168.1.1/goform/goform_set_cmd_process";
+    const url = "http://192.168.8.2/goform/goform_set_cmd_process";
 
     try {
       const response_01 = await axios.post(url, data, {
