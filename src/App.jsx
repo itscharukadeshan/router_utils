@@ -2,6 +2,8 @@
 
 import "./index.css";
 import NavBar from "./components/NavBar";
+import { HiStatusOnline } from "react-icons/hi";
+import { MdSignalWifi1Bar } from "react-icons/md";
 
 function App() {
   return (
@@ -21,21 +23,25 @@ function App() {
                 <div className='stat-title text-gray-400 font-mono mb-2'>
                   Signal
                 </div>
-                <div className='stat-value'>1</div>
+                <div className='stat-value m-2 '>
+                  <MdSignalWifi1Bar />
+                </div>
               </div>
 
               <div className='stat place-items-center'>
                 <div className='stat-title text-gray-400 font-mono mb-2'>
                   Sim status
                 </div>
-                <div className='stat-value '>4,200</div>
+                <div className='stat-value m-2'>
+                  <HiStatusOnline />
+                </div>
               </div>
 
               <div className='stat place-items-center'>
                 <div className='stat-title text-gray-400 font-mono mb-2'>
-                  Sim status
+                  Uptime
                 </div>
-                <div className='stat-value '>4,200</div>
+                <div className='stat-value '>1h 30m</div>
               </div>
             </div>
             <div className='overflow-x-auto'></div>
@@ -49,28 +55,33 @@ function App() {
             <button className='btn btn-sm btn-ghost btn-outline  w-fit mx-auto'>
               Reboot Hutch
             </button>
-            <div className='stats shadow stats-vertical my-6 bg-transparent lg:w-2/4 lg:mx-auto'>
+            <div className='stats shadow stats-vertical bg-transparent my-6 lg:w-2/4 lg:mx-auto '>
               <div className='stat place-items-center'>
                 <div className='stat-title text-gray-400 font-mono mb-2'>
                   Signal
                 </div>
-                <div className='stat-value'>1</div>
+                <div className='stat-value m-2 '>
+                  <MdSignalWifi1Bar />
+                </div>
               </div>
 
               <div className='stat place-items-center'>
                 <div className='stat-title text-gray-400 font-mono mb-2'>
                   Sim status
                 </div>
-                <div className='stat-value '>4,200</div>
+                <div className='stat-value m-2'>
+                  <HiStatusOnline />
+                </div>
               </div>
 
               <div className='stat place-items-center'>
                 <div className='stat-title text-gray-400 font-mono mb-2'>
-                  Sim status
+                  Uptime
                 </div>
-                <div className='stat-value '>4,200</div>
+                <div className='stat-value '>1h 30m</div>
               </div>
             </div>
+            <div className='overflow-x-auto'></div>
           </div>
         </div>
       </div>
