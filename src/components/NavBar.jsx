@@ -1,40 +1,50 @@
 /** @format */
 
+import axios from "axios";
+import { useState, useEffect } from "react";
+
 function NavBar() {
+  const [browserlessStatus, setBrowserlessStatus] = useState("offline");
+
+  const browserless_url = "http://localhost:3223/api/status/browserless";
+
+  useEffect(() => {
+    async function checkBrowserlessStatus() {
+      try {
+        const response = await axios.get(browserless_url);
+        if (response.status === 200) {
+          setBrowserlessStatus("online");
+        } else {
+          setBrowserlessStatus("offline");
+        }
+      } catch (error) {
+        console.error("Failed to get browserless status:", error);
+        setBrowserlessStatus("offline");
+      }
+    }
+
+    checkBrowserlessStatus();
+    const intervalId = setInterval(checkBrowserlessStatus, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []); // Remove browserlessStatus from the dependency array
+
   return (
     <div className='navbar bg-gray-800'>
       <div className='flex-1'>
         <a className='btn btn-ghost text-xl'>Router Utils</a>
       </div>
       <div className='flex-none'>
-        <ul className='menu menu-horizontal px-1'>
+        <ul className='menu menu-horizontal'>
           <li>
-            <a
-              className='font-mono font-extrabold'
-              href='https://router-utils.vercel.app/'>
-              Website
-            </a>
-          </li>
-          <li>
-            <details>
-              <summary className='font-mono font-extrabold'>Local</summary>
-              <ul className='p-2 bg-base-100 rounded-t-none'>
-                <li>
-                  <a
-                    className='font-mono font-extrabold'
-                    href='http://192.168.1.175:5000'>
-                    Hutch
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className='font-mono font-extrabold'
-                    href='http://192.168.8.198:5000'>
-                    Dialog
-                  </a>
-                </li>
-              </ul>
-            </details>
+            <button className='btn btn-ghost'>
+              browserless
+              {browserlessStatus === "online" ? (
+                <div className='badge badge-accent'>Online</div>
+              ) : (
+                <div className='badge badge-error'>Offline</div>
+              )}
+            </button>
           </li>
         </ul>
       </div>
