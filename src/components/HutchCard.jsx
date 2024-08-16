@@ -24,10 +24,10 @@ function HutchCard() {
     plmn: "Unknown Network",
     rsrp: "Loading ...",
     rsrq: "Loading ...",
-    uplink_rate: "Loading ...",
-    downlink_rate: "Loading ...",
-    uplink_traffic: "Loading ...",
-    downlink_traffic: "Loading ...",
+    uplink_rate: 0,
+    downlink_rate: 0,
+    uplink_traffic: 0,
+    downlink_traffic: 0,
     web_signal: "Loading ...",
     online_time: "Loading ...",
   });
@@ -77,7 +77,6 @@ function HutchCard() {
     try {
       await axios.get(endpoint);
       if (endpoint === hutch_reboot) {
-        await new Promise((resolve) => setTimeout(resolve, 5000));
         await axios.get(endpoint);
       }
     } catch (error) {
