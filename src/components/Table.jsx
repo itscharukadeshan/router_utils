@@ -5,6 +5,7 @@
 import prettyBytes from "pretty-bytes";
 
 function Table({ data }) {
+  let total_traffic = data.uplink_traffic + data.downlink_traffic;
   return (
     <div className='overflow-x-auto m-auto'>
       <table className='table font-bold font-mono '>
@@ -39,6 +40,10 @@ function Table({ data }) {
           <tr>
             <td>Down Traffic</td>
             <td>{prettyBytes(data.downlink_traffic)}</td>
+          </tr>
+          <tr>
+            <td>Total Traffic</td>
+            <td>{prettyBytes(total_traffic)}</td>
           </tr>
         </tbody>
       </table>
