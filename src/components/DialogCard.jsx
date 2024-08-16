@@ -9,6 +9,8 @@ import {
   MdSignalWifiStatusbar3Bar,
   MdSignalWifiStatusbar4Bar,
 } from "react-icons/md";
+
+import notify from "./toastNotifications";
 import { API_URL } from "../config";
 import moment from "moment";
 import { Table } from "./Table";
@@ -65,6 +67,7 @@ function DialogCard() {
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+        notify("Dialog router restarting", { type: "success" });
       }
     };
 
@@ -77,8 +80,10 @@ function DialogCard() {
   const handleButtonClick = async (endpoint) => {
     try {
       await axios.get(endpoint);
+      notify("Restarting router", { type: "info" });
     } catch (error) {
       console.error("Unable to restart");
+      notify("Unable to restart", { type: "error" });
     }
   };
 

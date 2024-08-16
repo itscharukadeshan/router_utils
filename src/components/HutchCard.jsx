@@ -9,6 +9,8 @@ import {
   MdSignalWifiStatusbar3Bar,
   MdSignalWifiStatusbar4Bar,
 } from "react-icons/md";
+
+import notify from "./toastNotifications";
 import { API_URL } from "../config";
 import { Table } from "./Table";
 import moment from "moment";
@@ -64,6 +66,7 @@ function HutchCard() {
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+        notify("Hutch router restarting", { type: "success" });
       }
     };
 
@@ -76,8 +79,10 @@ function HutchCard() {
   const handleButtonClick = async (endpoint) => {
     try {
       await axios.get(endpoint);
+      notify("Restarting router", { type: "info" });
     } catch (error) {
       console.error("Unable to restart");
+      notify("Unable to restart", { type: "error" });
     }
   };
 

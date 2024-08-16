@@ -4,6 +4,10 @@ import "./index.css";
 import NavBar from "./components/NavBar";
 import HutchCard from "./components/HutchCard";
 import DialogCard from "./components/DialogCard";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import axios from "axios";
 import { API_URL } from "./config";
 
@@ -36,6 +40,7 @@ function App() {
         <DialogCard />
         <HutchCard />
       </div>
+      <ToastContainer />
     </div>
   );
 }
