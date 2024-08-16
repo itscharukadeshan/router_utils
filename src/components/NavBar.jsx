@@ -2,11 +2,12 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { API_URL } from "../config";
 
 function NavBar() {
   const [browserlessStatus, setBrowserlessStatus] = useState("offline");
 
-  const browserless_url = "http://localhost:3223/api/status/browserless";
+  const browserless_url = `${API_URL}/api/status/browserless`;
 
   useEffect(() => {
     async function checkBrowserlessStatus() {

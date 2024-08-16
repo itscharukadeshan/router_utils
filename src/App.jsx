@@ -6,6 +6,12 @@ import { HiStatusOnline } from "react-icons/hi";
 import { MdSignalWifi1Bar } from "react-icons/md";
 
 function App() {
+  // TODO Fix env and add BASE_URL to the browserless status --------------- {{Priority 01}}
+  // TODO Refactor card to be separate components (dynamically pass data).
+  // TODO Implement the table with status and other data.
+  // TODO Add Legacy restart
+  // TODO Add dns_2 of and on flow
+
   return (
     <>
       <NavBar />
