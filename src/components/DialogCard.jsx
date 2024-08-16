@@ -17,6 +17,8 @@ function DialogCard() {
   const dialog_stats_url = `${API_URL}/api/status/dialog`;
   const dialog_reboot = `${API_URL}/api/restart_dialog`;
   const dialog_legacy_reboot = `${API_URL}/api/legacy/restart_dialog`;
+  const dns2_off = `${API_URL}/api/dns2_dialog_disable`;
+  const dns2_on = `${API_URL}/api/dns2_dialog_enable`;
   const [data, setData] = useState({
     service_status: "Loading ...",
     sim_status: "Loading ...",
@@ -128,6 +130,18 @@ function DialogCard() {
           </div>
         </div>
         <Table data={data} />
+        <div className='flex flex-col lg:flex-row m-auto mt-4 '>
+          <button
+            onClick={() => handleButtonClick(dns2_on)}
+            className='btn btn-sm btn-outline btn-success w-fit m-auto my-2 lg:mx-2'>
+            Switch Dns_2 On
+          </button>
+          <button
+            onClick={() => handleButtonClick(dns2_off)}
+            className='btn btn-sm btn-outline btn-success w-fit m-auto my-2 lg:mx-2 '>
+            Switch Dns_2 Off
+          </button>
+        </div>
       </div>
     </div>
   );
