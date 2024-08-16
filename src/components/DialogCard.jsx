@@ -11,6 +11,7 @@ import {
 } from "react-icons/md";
 import { API_URL } from "../config";
 import moment from "moment";
+import { Table } from "./Table";
 
 function DialogCard() {
   const dialog_stats_url = `${API_URL}/api/status/dialog`;
@@ -28,6 +29,7 @@ function DialogCard() {
     downlink_traffic: "Loading ...",
     web_signal: "Loading ...",
     online_time: "Loading ...",
+    network_type: "Loading ...",
   });
   const formatUptime = (seconds) => {
     return moment.duration(seconds, "seconds").humanize();
@@ -85,10 +87,10 @@ function DialogCard() {
   return (
     <div className='card lg:card-normal bg-pink-950 shadow-2xl flex-1 m-6 ml-6'>
       <div className='card-title text-3xl mt-6 mx-auto font-serif font-extrabold text-warning '>
-        Dialog
+        Dialog - {data.network_type}
       </div>
       <div className='card-body m-auto'>
-        <div className='flex flex-col lg:flex-row '>
+        <div className='flex flex-col lg:flex-row m-auto '>
           <button
             onClick={() => handleButtonClick(dialog_reboot)}
             className='btn btn-sm btn-outline btn-warning w-fit m-auto my-2 lg:mx-2'>
@@ -126,7 +128,7 @@ function DialogCard() {
             <div className='stat-value '>{formatUptime(data.online_time)}</div>
           </div>
         </div>
-        <div className='overflow-x-auto'></div>
+        <Table data={data} />
       </div>
     </div>
   );

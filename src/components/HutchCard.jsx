@@ -87,7 +87,7 @@ function HutchCard() {
   return (
     <div className='card lg:card-normal bg-pink-950 shadow-2xl flex-1 m-6 ml-6'>
       <div className='card-title text-3xl mt-6 mx-auto font-serif font-extrabold text-warning '>
-        Hutch
+        Hutch - {data.network_type}
       </div>
       <div className='card-body m-auto'>
         <div className='flex flex-col lg:flex-row '>
