@@ -7,6 +7,7 @@ import DialogCard from "./components/DialogCard";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import notify from "./components/toastNotifications";
 
 import axios from "axios";
 import { API_URL } from "./config";
@@ -20,11 +21,13 @@ function App() {
 
   const handleButtonClick = async () => {
     try {
+      notify("Restart network", { type: "info" });
       await axios.get(dialog_legacy_reboot);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       await axios.get(hutch_legacy_reboot);
     } catch (error) {
-      console.error("Unable to restart");
+      console.error("Unable to restart network");
+      notify("Unable to restart network", { type: "error" });
     }
   };
 
