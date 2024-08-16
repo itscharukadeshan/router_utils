@@ -28,7 +28,7 @@ function NavBar() {
     const intervalId = setInterval(checkBrowserlessStatus, 3000);
 
     return () => clearInterval(intervalId);
-  }, []); // Remove browserlessStatus from the dependency array
+  }, []);
 
   return (
     <div className='navbar bg-blue-950 shadow-lg'>
