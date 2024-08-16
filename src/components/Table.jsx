@@ -2,6 +2,8 @@
 
 /* eslint-disable react/prop-types */
 
+import prettyBytes from "pretty-bytes";
+
 function Table({ data }) {
   return (
     <div className='overflow-x-auto m-auto'>
@@ -24,19 +26,19 @@ function Table({ data }) {
 
           <tr>
             <td>Down Link</td>
-            <td>{data.downlink_rate}</td>
+            <td>{prettyBytes(data.downlink_rate)}</td>
           </tr>
           <tr>
             <td>Up Link</td>
-            <td>{data.uplink_rate}</td>
+            <td>{prettyBytes(data.uplink_rate)}</td>
           </tr>
           <tr>
             <td>Up Traffic</td>
-            <td>{data.uplink_traffic}</td>
+            <td>{prettyBytes(data.uplink_traffic)}</td>
           </tr>
           <tr>
             <td>Down Traffic</td>
-            <td>{data.downlink_traffic}</td>
+            <td>{prettyBytes(data.downlink_traffic)}</td>
           </tr>
         </tbody>
       </table>
