@@ -76,9 +76,6 @@ function HutchCard() {
   const handleButtonClick = async (endpoint) => {
     try {
       await axios.get(endpoint);
-      if (endpoint === hutch_reboot) {
-        await axios.get(endpoint);
-      }
     } catch (error) {
       console.error("Unable to restart");
     }

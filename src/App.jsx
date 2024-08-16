@@ -8,7 +8,6 @@ import axios from "axios";
 import { API_URL } from "./config";
 
 function App() {
-  // TODO Add dns_2 of and on flow
   // TODO find out what browserless resend req setTimeout
   // TODO some notifications
 

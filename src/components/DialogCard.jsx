@@ -77,9 +77,6 @@ function DialogCard() {
   const handleButtonClick = async (endpoint) => {
     try {
       await axios.get(endpoint);
-      if (endpoint === dialog_reboot) {
-        await axios.get(endpoint);
-      }
     } catch (error) {
       console.error("Unable to restart");
     }
