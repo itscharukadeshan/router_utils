@@ -31,7 +31,7 @@ function NavBar() {
   }, []); // Remove browserlessStatus from the dependency array
 
   return (
-    <div className='navbar bg-gray-800'>
+    <div className='navbar bg-blue-950 shadow-lg'>
       <div className='flex-1'>
         <a className='btn btn-ghost text-xl'>Router Utils</a>
       </div>
