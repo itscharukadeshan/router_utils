@@ -6,19 +6,19 @@ import HutchCard from "./components/HutchCard";
 import DialogCard from "./components/DialogCard";
 
 function App() {
-  // TODO Refactor card to be separate components (dynamically pass data).
   // TODO Implement the table with status and other data.
-  // TODO Add Legacy restart
   // TODO Add dns_2 of and on flow
+  // TODO find out what browserless resend req setTimeout
+  // TODO some notifications
 
   return (
-    <>
+    <div className=' bg-slate-800'>
       <NavBar />
       <div className='flex flex-col lg:flex-row w-full'>
         <DialogCard />
         <HutchCard />
       </div>
-    </>
+    </div>
   );
 }
 
