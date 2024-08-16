@@ -79,8 +79,8 @@ function DialogCard() {
 
   const handleButtonClick = async (endpoint) => {
     try {
-      await axios.get(endpoint);
       notify("Restarting router", { type: "info" });
+      await axios.get(endpoint);
     } catch (error) {
       console.error("Unable to restart");
       notify("Unable to restart", { type: "error" });
