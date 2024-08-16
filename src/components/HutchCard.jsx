@@ -10,6 +10,7 @@ import {
   MdSignalWifiStatusbar4Bar,
 } from "react-icons/md";
 import { API_URL } from "../config";
+import { Table } from "./Table";
 import moment from "moment";
 
 function HutchCard() {
@@ -128,7 +129,7 @@ function HutchCard() {
             <div className='stat-value '>{formatUptime(data.online_time)}</div>
           </div>
         </div>
-        <div className='overflow-x-auto'></div>
+        <Table data={data} />
       </div>
     </div>
   );
