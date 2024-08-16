@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { API_URL } from "../config";
+import notify from "./toastNotifications";
 
 function NavBar() {
   const [browserlessStatus, setBrowserlessStatus] = useState("offline");
@@ -21,6 +22,7 @@ function NavBar() {
       } catch (error) {
         console.error("Failed to get browserless status:", error);
         setBrowserlessStatus("offline");
+        notify("Unable to connect to browserless", { type: "warning" });
       }
     }
 
