@@ -79,11 +79,24 @@ function DialogCard() {
 
   const handleButtonClick = async (endpoint) => {
     try {
-      notify("Restarting router", { type: "info" });
+      if (endpoint === dns2_off) {
+        notify("Disabling dns 02", { type: "info" });
+      } else if (endpoint === dns2_on) {
+        notify("enabling dns 02", { type: "info" });
+      } else {
+        notify("Restarting router", { type: "info" });
+      }
+
       await axios.get(endpoint);
     } catch (error) {
       console.error("Unable to restart");
-      notify("Unable to restart", { type: "error" });
+      if (endpoint === dns2_off) {
+        notify("Unable to disable dns 02", { type: "error" });
+      } else if (endpoint === dns2_on) {
+        notify(" Unable to enabling dns 02", { type: "erro" });
+      } else {
+        notify("Unable to restart router", { type: "error" });
+      }
     }
   };
 
