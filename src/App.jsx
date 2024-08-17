@@ -13,7 +13,7 @@ import axios from "axios";
 import { API_URL } from "./config";
 
 function App() {
-  // TODO Docker image / way to host in sever
+  // TODO Implement the status check using browserless need to check starting status
 
   const dialog_legacy_reboot = `${API_URL}/api/legacy/restart_dialog`;
   const hutch_legacy_reboot = `${API_URL}/api/legacy/restart_hutch`;

@@ -19,7 +19,7 @@ function DialogCard() {
   const dialog_stats_url = `${API_URL}/api/status/dialog`;
   const dialog_reboot = `${API_URL}/api/restart_dialog`;
   const dialog_legacy_reboot = `${API_URL}/api/legacy/restart_dialog`;
-  const dialog_network_switch = `${API_URL}/api/dialog/switch_network`;
+  const dialog_network_switch = `${API_URL}/api/switch_network/dialog`;
   const dns2_off = `${API_URL}/api/dns2_dialog_disable`;
   const dns2_on = `${API_URL}/api/dns2_dialog_enable`;
   const [data, setData] = useState({
