@@ -19,7 +19,7 @@ function DialogCard() {
   const dialog_stats_url = `${API_URL}/api/status/dialog`;
   const dialog_reboot = `${API_URL}/api/restart_dialog`;
   const dialog_legacy_reboot = `${API_URL}/api/legacy/restart_dialog`;
-  // const dialog_network_switch = `${API_URL}/api/switch_network/dialog`;
+  const dialog_network_switch = `${API_URL}/api/switch_network/dialog`;
   const dns2_off = `${API_URL}/api/dns2_dialog_disable`;
   const dns2_on = `${API_URL}/api/dns2_dialog_enable`;
   const [data, setData] = useState({
@@ -36,9 +36,9 @@ function DialogCard() {
     online_time: "Loading ...",
     network_type: "Loading ...",
   });
-  // const [switchChecked, setSwitchChecked] = useState(
-  //   data.ppp_status === "ppp_connected"
-  // );
+  const [switchChecked, setSwitchChecked] = useState(
+    data.ppp_status === "ppp_connected"
+  );
   const [isLoading, setIsLoading] = useState(false);
   const formatUptime = (seconds) => {
     return moment.duration(seconds, "seconds").humanize();
@@ -82,9 +82,9 @@ function DialogCard() {
     return () => clearInterval(intervalId);
   }, [dialog_stats_url]);
 
-  // useEffect(() => {
-  //   setSwitchChecked(data.ppp_status === "ppp_connected");
-  // }, [data.ppp_status]);
+  useEffect(() => {
+    setSwitchChecked(data.ppp_status === "ppp_connected");
+  }, [data.ppp_status]);
 
   const handleButtonClick = async (endpoint) => {
     try {
@@ -114,25 +114,25 @@ function DialogCard() {
     }
   };
 
-  // const handleSwitchClick = async (endpoint) => {
-  //   let network_status = "on";
+  const handleSwitchClick = async (endpoint) => {
+    let network_status = "on";
 
-  //   if (switchChecked === true) {
-  //     network_status = "off";
-  //   }
+    if (switchChecked === true) {
+      network_status = "off";
+    }
 
-  //   try {
-  //     setIsLoading(true);
-  //     await axios.get(endpoint);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     setIsLoading(false);
-  //     console.error(`Unable to switch ${network_status} internet connection`);
-  //     notify(`Unable to switch ${network_status} internet connection`, {
-  //       type: "error",
-  //     });
-  //   }
-  // };
+    try {
+      setIsLoading(true);
+      await axios.get(endpoint);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.error(`Unable to switch ${network_status} internet connection`);
+      notify(`Unable to switch ${network_status} internet connection`, {
+        type: "error",
+      });
+    }
+  };
 
   return (
     <div className='card lg:card-large bg-pink-950 shadow-2xl flex-1 m-6 ml-6'>
@@ -140,8 +140,16 @@ function DialogCard() {
       {isLoading ? (
         <span className='loading loading-bars bg-warning loading-md absolute top-6 left-6'></span>
       ) : null}
-      <div className='absolute top-6 right-6 mt-1'></div>
-      <div className='card-title text-3xl mt-6 mx-auto font-serif font-extrabold text-warning '>
+      <div className='absolute top-2 right-4 mt-1'>
+        <input
+          type='checkbox'
+          className='toggle toggle-warning'
+          checked={switchChecked}
+          onChange={() => handleSwitchClick(dialog_network_switch)}
+        />
+      </div>
+
+      <div className='card-title text-3xl mt-12 mx-auto font-serif font-extrabold text-warning '>
         Dialog - {data.network_type}
       </div>
       <div className='card-body m-auto'>

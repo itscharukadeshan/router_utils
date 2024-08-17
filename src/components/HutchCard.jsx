@@ -19,7 +19,7 @@ function HutchCard() {
   const hutch_stats_url = `${API_URL}/api/status/hutch`;
   const hutch_reboot = `${API_URL}/api/restart_hutch`;
   const hutch_legacy_reboot = `${API_URL}/api/legacy/restart_hutch`;
-  // const hutch_network_switch = `${API_URL}/api/hutch/switch_network`;
+  const hutch_network_switch = `${API_URL}/api/hutch/switch_network`;
 
   const [data, setData] = useState({
     service_status: "Loading ...",
@@ -37,9 +37,9 @@ function HutchCard() {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  // const [switchChecked, setSwitchChecked] = useState(
-  //   data.ppp_status === "ppp_connected"
-  // );
+  const [switchChecked, setSwitchChecked] = useState(
+    data.ppp_status === "ppp_connected"
+  );
 
   const formatUptime = (seconds) => {
     return moment.duration(seconds, "seconds").humanize();
@@ -83,9 +83,9 @@ function HutchCard() {
     return () => clearInterval(intervalId);
   }, [hutch_stats_url]);
 
-  // useEffect(() => {
-  //   setSwitchChecked(data.ppp_status === "ppp_connected");
-  // }, [data.ppp_status]);
+  useEffect(() => {
+    setSwitchChecked(data.ppp_status === "ppp_connected");
+  }, [data.ppp_status]);
 
   const handleButtonClick = async (endpoint) => {
     try {
@@ -100,25 +100,25 @@ function HutchCard() {
     }
   };
 
-  // const handleSwitchClick = async (endpoint) => {
-  //   let network_status = "on";
+  const handleSwitchClick = async (endpoint) => {
+    let network_status = "on";
 
-  //   if (switchChecked === true) {
-  //     network_status = "off";
-  //   }
+    if (switchChecked === true) {
+      network_status = "off";
+    }
 
-  //   try {
-  //     setIsLoading(true);
-  //     await axios.get(endpoint);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     setIsLoading(false);
-  //     console.error(`Unable to switch ${network_status} internet connection`);
-  //     notify(`Unable to switch ${network_status} internet connection`, {
-  //       type: "error",
-  //     });
-  //   }
-  // };
+    try {
+      setIsLoading(true);
+      await axios.get(endpoint);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.error(`Unable to switch ${network_status} internet connection`);
+      notify(`Unable to switch ${network_status} internet connection`, {
+        type: "error",
+      });
+    }
+  };
 
   return (
     <div className='card lg:card-normal bg-pink-950 shadow-2xl flex-1 m-6 ml-6'>
@@ -126,8 +126,16 @@ function HutchCard() {
       {isLoading ? (
         <span className='loading loading-bars bg-warning loading-md absolute top-6 left-6'></span>
       ) : null}
+      <div className='absolute top-2 right-4 mt-1'>
+        <input
+          type='checkbox'
+          className='toggle toggle-warning'
+          checked={switchChecked}
+          onChange={() => handleSwitchClick(hutch_network_switch)}
+        />
+      </div>
 
-      <div className='card-title text-3xl mt-6 mx-auto font-serif font-extrabold text-warning '>
+      <div className='card-title text-3xl mt-12 mx-auto font-serif font-extrabold text-warning '>
         Hutch - {data.network_type}
       </div>
       <div className='card-body m-auto'>
