@@ -131,7 +131,7 @@ function HutchCard() {
           type='checkbox'
           className='toggle toggle-warning'
           checked={switchChecked}
-          onClick={() => handleSwitchClick(hutch_network_switch)}
+          onChange={() => handleSwitchClick(hutch_network_switch)}
         />
       </div>
       <div className='card-title text-3xl mt-6 mx-auto font-serif font-extrabold text-warning '>
