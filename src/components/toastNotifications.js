@@ -2,6 +2,8 @@
 
 import { toast } from "react-toastify";
 
+const displayedNotifications = new Set();
+
 const notify = (message, options = {}) => {
   const {
     type = "default",
@@ -12,14 +14,18 @@ const notify = (message, options = {}) => {
     ...rest
   } = options;
 
-  toast(message, {
-    type,
-    position,
-    autoClose,
-    theme,
-    transition,
-    ...rest,
-  });
+  if (!displayedNotifications.has(message)) {
+    toast(message, {
+      type,
+      position,
+      autoClose,
+      theme,
+      transition,
+      ...rest,
+    });
+
+    displayedNotifications.add(message);
+  }
 };
 
 export default notify;

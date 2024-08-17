@@ -13,8 +13,7 @@ import axios from "axios";
 import { API_URL } from "./config";
 
 function App() {
-  // TODO find out what browserless resend req setTimeout
-  // TODO some notifications
+  // TODO Docker image / way to host in sever
 
   const dialog_legacy_reboot = `${API_URL}/api/legacy/restart_dialog`;
   const hutch_legacy_reboot = `${API_URL}/api/legacy/restart_hutch`;
