@@ -89,9 +89,12 @@ function HutchCard() {
 
   const handleButtonClick = async (endpoint) => {
     try {
+      setIsLoading(true);
       notify("Restarting router", { type: "info" });
       await axios.get(endpoint);
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.error("Unable to restart");
       notify("Unable to restart", { type: "error" });
     }
