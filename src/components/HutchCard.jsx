@@ -19,7 +19,7 @@ function HutchCard() {
   const hutch_stats_url = `${API_URL}/api/status/hutch`;
   const hutch_reboot = `${API_URL}/api/restart_hutch`;
   const hutch_legacy_reboot = `${API_URL}/api/legacy/restart_hutch`;
-  const hutch_network_switch = `${API_URL}/api/hutch/switch_network`;
+  const hutch_network_switch = `${API_URL}/api/switch_network/hutch`;
 
   const [data, setData] = useState({
     service_status: "Loading ...",
